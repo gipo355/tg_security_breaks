@@ -12,8 +12,8 @@
         "debug": "node -r ts-node/register"
     },
     "engines": {
-        "node": "18.4.0",
-        "npm": "8.12.1"
+        "node": "17.9.0",
+        "npm": "8,5,5"
     },
     "private": true,
     "keywords": [],
