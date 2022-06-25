@@ -2,7 +2,7 @@
 // function Ciao() {
 //     this.ciao = 'ciao';
 // // }
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty( exports, "__esModule", { value: true } );
 // import { Client } from 'pg';
 // const client = new Client();
 // client.connect();
@@ -12,9 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // } );
 // function cioa(params) {
 // }
-require("dotenv-defaults/config");
-console.log(process.env.KEY);
-function ciao(param) {
-    console.log(param);
+require( "dotenv-defaults/config" );
+console.log( process.env.TG_KEY );
+function ciao( param ) {
+    console.log( param );
 }
-ciao('param');
+ciao( 'param' );
