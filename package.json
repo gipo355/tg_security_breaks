@@ -13,7 +13,7 @@
     },
     "engines": {
         "node": "17.9.0",
-        "npm": "8,5,5"
+        "npm": "8.5.5"
     },
     "private": true,
     "keywords": [],
