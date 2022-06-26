@@ -7,6 +7,7 @@ import sendTurns, { initializeDb } from './app';
 
 const port = Number(process.env.PORT);
 const URL = process.env.URL;
+const chatID = process.env.CHAT_ID as string;
 
 // const options: Partial<Options<Context<Update>>> = {
 //     webHook: {
@@ -15,55 +16,71 @@ const URL = process.env.URL;
 // };
 const bot = new Telegraf(process.env.TG_KEY as string);
 const telegram = new Telegram(process.env.TG_KEY as string);
-const chatID = process.env.CHAT_ID as string;
 
 // BOT
-bot.start((ctx) => {
-    ctx.reply(`Hello  ${ctx.from.first_name}${ctx.from.last_name}!`);
-});
+// bot.start((ctx) => {
+//     ctx.reply(`Hello  ${ctx.from.first_name}${ctx.from.last_name}!`);
+// });
 
-bot.help((ctx) => {
-    ctx.reply('restartDB, start');
-});
+// bot.help((ctx) => {
+//     ctx.reply('restartDB, start');
+// });
 
-bot.hears('restartDB', (ctx) => {
-    initializeDb();
-    ctx.reply('DB restarted');
-});
+// bot.hears('restartDB', (ctx) => {
+//     initializeDb();
+//     ctx.reply('DB restarted');
+// });
 
 // const tryDate = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' });
 // console.log(tryDate);
 
 // RECURRENT RULE - SCHEDULED
-const rule = new RecurrenceRule();
-rule.hour = 7;
-rule.minute = 0;
-rule.second = 0;
-rule.tz = `CET`;
+// const rule = new RecurrenceRule();
+// rule.hour = 7;
+// rule.minute = 0;
+// rule.second = 0;
+// rule.tz = `CET`;
 
-telegram.sendMessage(chatID, 'ciao');
+// new Date(year, monthIndex, day, hours, minutes, seconds)
+const startTime = new Date('2022-06-26T21:10:00.000+02:00').getTime();
+const endTime = new Date('2022-07-01T00:00:00.000+02:00').getTime();
 
-const job = scheduleJob(rule, function () {
-    // console.log('Today is recognized by Rebecca Black!');
-    // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
-    telegram.sendMessage(chatID, sendTurns());
-});
+// console.log(Date.now());
+// console.log(startTime);
 
+// telegram.sendMessage(chatID, 'ciao');
+
+// const job = scheduleJob(rule, function () {
+//     // console.log('Today is recognized by Rebecca Black!');
+//     // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
+//     telegram.sendMessage(chatID, sendTurns());
+// });
+
+const job3 = scheduleJob(
+    {
+        start: startTime,
+        end: endTime,
+        rule: '00 * * * * *',
+    },
+    () => {
+        telegram.sendMessage(chatID, sendTurns());
+    }
+);
 // function getDate() {
 //     const date = new Date();
 //     const str = date.toLocaleTimeString('it-IT');
 //     return str;
 // }
 
-const job2 = scheduleJob('*/30 * * * * *', function () {
-    // console.log('Today is recognized by Rebecca Black!');
-    // console.log(tryDate);
-    // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
-    telegram.sendMessage(chatID, sendTurns());
-});
+// const job2 = scheduleJob('*/30 * * * * *', function () {
+//     // console.log('Today is recognized by Rebecca Black!');
+//     // console.log(tryDate);
+//     // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
+//     telegram.sendMessage(chatID, sendTurns());
+// });
 
 // ! LAUNCH AND END GRACEFULLY ON NODE STOP
-bot.launch();
+// bot.launch();
 // bot.launch({
 //     webhook: {
 //         domain: URL,
