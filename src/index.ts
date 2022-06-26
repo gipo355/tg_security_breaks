@@ -41,6 +41,8 @@ rule.minute = 0;
 rule.second = 0;
 rule.tz = `CET`;
 
+telegram.sendMessage(chatID, 'ciao');
+
 const job = scheduleJob(rule, function () {
     // console.log('Today is recognized by Rebecca Black!');
     // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
