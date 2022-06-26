@@ -5,23 +5,31 @@ import { scheduleJob, RecurrenceRule } from 'node-schedule';
 import { Telegraf, Telegram } from 'telegraf';
 import sendTurns, { initializeDb } from './app';
 
-const bot = new Telegraf(process.env.TG_KEY as string);
+const port = Number(process.env.PORT);
+const URL = process.env.URL;
+
+const options: Partial<Options<Context<Update>>> = {
+    webHook: {
+        port: port,
+    },
+};
+const bot = new Telegraf(process.env.TG_KEY as string, options);
 const telegram = new Telegram(process.env.TG_KEY as string);
 const chatID = process.env.CHAT_ID as string;
 
 // BOT
-// bot.start((ctx) => {
-//     ctx.reply(`Hello  ${ctx.from.first_name}${ctx.from.last_name}!`);
-// });
+bot.start((ctx) => {
+    ctx.reply(`Hello  ${ctx.from.first_name}${ctx.from.last_name}!`);
+});
 
-// bot.help((ctx) => {
-//     ctx.reply('restartDB, start');
-// });
+bot.help((ctx) => {
+    ctx.reply('restartDB, start');
+});
 
-// bot.hears('restartDB', (ctx) => {
-//     initializeDb();
-//     ctx.reply('DB restarted');
-// });
+bot.hears('restartDB', (ctx) => {
+    initializeDb();
+    ctx.reply('DB restarted');
+});
 
 // const tryDate = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' });
 // console.log(tryDate);
@@ -52,7 +60,13 @@ const job2 = scheduleJob('*/10 * * * * *', function () {
 });
 
 // ! LAUNCH AND END GRACEFULLY ON NODE STOP
-bot.launch();
+// bot.launch();
+bot.launch({
+    webhook: {
+        domain: URL,
+        port: port,
+    },
+});
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
