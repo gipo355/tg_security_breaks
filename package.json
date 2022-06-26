@@ -5,7 +5,7 @@
     "homepage": "https://github.com/gipo355/tg_security_breaks",
     "main": "./src/index.ts",
     "scripts": {
-        "start": "node tsc/index.js",
+        "start": "node dist/index.js",
         "lint": "eslint ./src/ ./src/**/*",
         "babel": "nodemon --exec babel-node ./src/index.ts --extensions .ts",
         "tsc-build": "tsc",
