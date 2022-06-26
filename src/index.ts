@@ -8,12 +8,12 @@ import sendTurns, { initializeDb } from './app';
 const port = Number(process.env.PORT);
 const URL = process.env.URL;
 
-const options: Partial<Options<Context<Update>>> = {
-    webHook: {
-        port: port,
-    },
-};
-const bot = new Telegraf(process.env.TG_KEY as string, options);
+// const options: Partial<Options<Context<Update>>> = {
+//     webHook: {
+//         port: port,
+//     },
+// };
+const bot = new Telegraf(process.env.TG_KEY as string);
 const telegram = new Telegram(process.env.TG_KEY as string);
 const chatID = process.env.CHAT_ID as string;
 
@@ -52,7 +52,7 @@ const job = scheduleJob(rule, function () {
 //     return str;
 // }
 
-const job2 = scheduleJob('*/10 * * * * *', function () {
+const job2 = scheduleJob('*/30 * * * * *', function () {
     // console.log('Today is recognized by Rebecca Black!');
     // console.log(tryDate);
     // telegram.sendMessage(chatID, `${new Date().toLocaleTimeString()}`);
@@ -60,13 +60,13 @@ const job2 = scheduleJob('*/10 * * * * *', function () {
 });
 
 // ! LAUNCH AND END GRACEFULLY ON NODE STOP
-// bot.launch();
-bot.launch({
-    webhook: {
-        domain: URL,
-        port: port,
-    },
-});
+bot.launch();
+// bot.launch({
+//     webhook: {
+//         domain: URL,
+//         port: port,
+//     },
+// });
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
