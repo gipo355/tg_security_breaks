@@ -7,7 +7,7 @@ import sendTurns, { initializeDb } from './app';
 
 const port = Number(process.env.PORT);
 const URL = process.env.URL;
-const chatID = process.env.CHAT_ID as string;
+const chatID = process.env.CHAT_ID_SECURITY as string;
 
 const bot = new Telegraf(process.env.TG_KEY as string);
 const telegram = new Telegram(process.env.TG_KEY as string);
