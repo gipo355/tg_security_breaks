@@ -1,1 +1,7 @@
-{"workers":["levante1","levante2","ponente1","ponente2"],"levante1":{"torrette":[13,14,9,10,11,12],"startingHour":11},"levante2":{"torrette":[15,16,17,18,19],"startingHour":12},"ponente1":{"torrette":[32,33,28,29,30,31],"startingHour":11},"ponente2":{"torrette":[38,39,34,35,36,37],"startingHour":11}}
+{
+    "workers": ["levante1", "levante2", "ponente1", "ponente2"],
+    "levante1": { "torrette": [9, 10, 11, 12, 13, 14], "startingHour": 11 },
+    "levante2": { "torrette": [15, 16, 17, 18, 19], "startingHour": 12 },
+    "ponente1": { "torrette": [28, 29, 30, 31, 32, 33], "startingHour": 11 },
+    "ponente2": { "torrette": [34, 35, 36, 37, 38, 39], "startingHour": 11 }
+}
