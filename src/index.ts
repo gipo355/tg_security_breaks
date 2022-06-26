@@ -63,13 +63,13 @@ const job2 = scheduleJob('*/30 * * * * *', function () {
 });
 
 // ! LAUNCH AND END GRACEFULLY ON NODE STOP
-// bot.launch();
-bot.launch({
-    webhook: {
-        domain: URL,
-        port: port,
-    },
-});
+bot.launch();
+// bot.launch({
+//     webhook: {
+//         domain: URL,
+//         port: port,
+//     },
+// });
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
