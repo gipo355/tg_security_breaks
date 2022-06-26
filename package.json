@@ -1,7 +1,8 @@
 {
-    "name": "node_express_template",
+    "name": "security-bot-lunch",
     "version": "1.0.0",
-    "description": "",
+    "description": "send daily message of current lunch breaks",
+    "homepage": "https://github.com/gipo355/tg_security_breaks",
     "main": "./src/index.ts",
     "scripts": {
         "start": "node tsc/index.js",
@@ -19,8 +20,8 @@
     },
     "private": true,
     "keywords": [],
-    "author": "MC",
-    "license": "ISC",
+    "author": "MC <gipo18649ah@gmail.com>",
+    "license": "MIT",
     "devDependencies": {
         "@babel/cli": "^7.17.10",
         "@babel/core": "^7.18.2",

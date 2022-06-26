@@ -23,8 +23,6 @@ interface Security {
     };
 }
 
-// ! BUG IF I WANT TO CHANGE AND REMOVE A WORKER IT FUCKS UP EVERYTHING BECAUSE THEY ARE CONST,
-// ! got to fix both the interface and the initialize db below
 function writeTurns() {
     // get API db
     const data = fs.readFileSync(
@@ -123,5 +121,4 @@ function initializeDb() {
 }
 
 export { writeTurns as default, initializeDb };
-// writeTurns();
-// initializeDb();
+
