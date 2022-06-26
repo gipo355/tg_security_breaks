@@ -60,7 +60,7 @@ const job3 = scheduleJob(
     {
         start: startTime,
         end: endTime,
-        rule: '00 * * * * *',
+        rule: '05 * * * * *',
     },
     () => {
         telegram.sendMessage(chatID, sendTurns());
