@@ -1,6 +1,6 @@
 'use strict';
 
-// import 'dotenv-defaults/config';
+import 'dotenv-defaults/config';
 import { scheduleJob, RecurrenceRule } from 'node-schedule';
 import { Telegraf, Telegram } from 'telegraf';
 import sendTurns, { initializeDb } from './app';
