@@ -4,10 +4,10 @@
     "description": "",
     "main": "./src/index.ts",
     "scripts": {
-        "start": "node tsc/index.js",
+        "node-start": "node tsc/index.js",
         "lint": "eslint ./src/ ./src/**/*",
         "babel": "nodemon --exec babel-node ./src/index.ts --extensions .ts",
-        "build": "tsc",
+        "tsc-build": "tsc",
         "babel-build": "babel ./src --out-dir ./dist --extensions .ts",
         "tsc": "tsc",
         "debug": "node -r ts-node/register",

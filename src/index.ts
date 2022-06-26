@@ -37,7 +37,8 @@ bot.hears('restartDB', (ctx) => {
 // RECURRENT RULE - SCHEDULED
 const rule = new RecurrenceRule();
 rule.hour = 7;
-// rule.minute = 44;
+rule.minute = 0;
+rule.second = 0;
 rule.tz = `CET`;
 
 const job = scheduleJob(rule, function () {
