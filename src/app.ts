@@ -66,7 +66,10 @@ function writeTurns() {
         // change db
         switchFirstToLast(turretsArr);
 
-        return `${str}\n${turnsStr}\n`;
+        // return full string with every break
+        // return `${str}\n${turnsStr}\n`;
+        // return only initial break
+        return `${str}\n`;
     }
 
     function allMessage() {
@@ -74,6 +77,7 @@ function writeTurns() {
 
         let finalStr = `🌊 PAUSE DEL ${date} 🌊\n\n`;
 
+        // LEVANTE 1 INIZIA ALLA TORRETTA ALLE
         for (const [i, worker] of security.workers.entries()) {
             const prop = security[worker];
 
@@ -121,4 +125,3 @@ function initializeDb() {
 }
 
 export { writeTurns as default, initializeDb };
-

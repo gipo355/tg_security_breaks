@@ -10,8 +10,10 @@ const chatID = process.env.CHAT_ID as string;
 const bot = new Telegraf(process.env.TG_KEY as string);
 const telegram = new Telegram(process.env.TG_KEY as string);
 
-const startTime = new Date('2022-07-01T00:00:00.000+02:00').getTime();
-// const startTime = new Date('2022-06-01T00:00:00.000+02:00').getTime();
+// dev start
+const startTime = new Date('2022-06-01T00:00:00.000+02:00').getTime();
+
+// const startTime = new Date('2022-07-01T00:00:00.000+02:00').getTime();
 const endTime = new Date('2022-09-01T00:00:00.000+02:00').getTime();
 
 // TODO fix rule, startTime, chatid and starting DB + start dyno / dyno is gmt+0
@@ -19,8 +21,10 @@ const job3 = scheduleJob(
     {
         start: startTime, // milliseconds
         end: endTime, // milliseconds
-        rule: '00 00 05 * * *',
-        // rule: '05 * * * * *',
+        // rule: '00 00 05 * * *',
+
+        // dev cron
+        rule: '*/30 * * * * *',
         // rule: '00 25 05 * * *',
         // rule: '*/2 * * * *',
     },
