@@ -6,6 +6,7 @@ import { Telegraf, Telegram } from 'telegraf';
 import sendTurns from './app';
 
 const chatID = process.env.CHAT_ID as string;
+const chatIDDev = process.env.CHAT_ID_DEV as string;
 
 const bot = new Telegraf(process.env.TG_KEY as string);
 const telegram = new Telegram(process.env.TG_KEY as string);
@@ -30,6 +31,7 @@ const job3 = scheduleJob(
     },
     () => {
         telegram.sendMessage(chatID, sendTurns());
+        telegram.sendMessage(chatIDDev, sendTurns());
     }
 );
 
