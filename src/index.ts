@@ -14,13 +14,14 @@ const telegram = new Telegram(process.env.TG_KEY as string);
 const startTime = new Date('2022-06-01T00:00:00.000+02:00').getTime();
 const endTime = new Date('2022-09-01T00:00:00.000+02:00').getTime();
 
-// TODO fix rule, startTime, chatid and starting DB + start dyno
+// TODO fix rule, startTime, chatid and starting DB + start dyno / dyno is gmt+0
 const job3 = scheduleJob(
     {
         start: startTime,
         end: endTime,
         // rule: '05 * * * * *',
-        rule: '00 25 05 * * *',
+        // rule: '00 25 05 * * *',
+        rule: '*/2 * * * *',
     },
     () => {
         telegram.sendMessage(chatID, sendTurns());
