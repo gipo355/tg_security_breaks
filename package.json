@@ -12,7 +12,8 @@
         "build": "babel ./src --out-dir ./dist --extensions .ts",
         "tsc": "tsc --watch",
         "debug": "node -r ts-node/register",
-        "dev": "nodemon src/index.ts"
+        "dev": "nodemon src/index.ts",
+        "deploy": "npm run build && git subtree split -b deploy -P dist/ && git push origin deploy"
     },
     "engines": {
         "node": "17.9.0",
@@ -48,6 +49,7 @@
         "typescript": "^4.7.4"
     },
     "dependencies": {
+        "babel": "^6.23.0",
         "node-schedule": "^2.1.0",
         "telegraf": "^4.8.5"
     }
