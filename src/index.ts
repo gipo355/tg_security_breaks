@@ -35,6 +35,8 @@ const job3 = scheduleJob(
     }
 );
 
+console.log('ciao');
+
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
