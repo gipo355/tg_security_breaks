@@ -13,7 +13,7 @@
         "tsc": "tsc --watch",
         "debug": "node -r ts-node/register",
         "dev": "nodemon src/index.ts",
-        "deploy": "npm run build && git subtree split -b deploy -P dist/ && git push origin deploy"
+        "deploy": "npm run build && git subtree split -b deploy -P dist/ && git switch deploy && git add . && git commit -m \"deploy\" && git push origin deploy"
     },
     "engines": {
         "node": "17.9.0",
